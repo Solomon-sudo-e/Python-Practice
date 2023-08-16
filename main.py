@@ -1,4 +1,8 @@
 from math import *
+import useful_tools
+import docx
+from dog import Dog
+from question import Question
 
 # print("   /|")
 # print("  / |")
@@ -272,7 +276,7 @@ def calculator():
 #Reading external files
 #There is different modes for files. "r" (Read) "w" (Write) "a" (Append) "r+" (Read & Write)
 # WRITE WILL OVERRIDE ENTIRE FILE OR CREATE NEW FILE
-file = open("people_list", "r")
+# file = open("people_list", "r")
 # for people in file.readlines():
 #     print(people)
 # file.close()
@@ -280,6 +284,46 @@ file = open("people_list", "r")
 # file = open("people_list", "a")
 # file.write("\nAlex - Developer")
 
-#Safe practice is to make a new file for it and copy it. (I think) (I just mnade it up on the spot)
-file_new = open("people_listNEW", "r+")
-file_new.write(file.read())
+#Safe practice is to make a new file for it and copy it. (I think) (I just made it up on the spot)
+# file_new = open("people_listNEW", "r+")
+# file_new.write(file.read())
+
+
+#Modules / Pips
+#Modules are classes.
+#docs.python.org has many modules.
+
+# print(useful_tools.roll_dice(10))
+#Imported docx to be used. Then I made a dog which is my dog
+
+dog1 = Dog(
+    "Marvin", "chocolate_labradoodle",
+    True, "brown",
+    60, "male",
+    "The Goodest")
+# print(dog1.was_good_doggo())
+# print(dog1.weight)
+print(dog1.is_mammal())
+
+question_prompts = [
+    "What is salmons favorite color?\n(a)red\n(b)blue\n(c)black\n\n",
+    "What is salmons main coding language?\n(a)java\n(b)c#\n(c)python\n\n",
+    "What is Salmons favorite drink?\n(a)water\n(b)protein shakes\n(c)energy drinks\n\n"
+]
+
+questions = [
+    Question(question_prompts[0], "b"),
+    Question(question_prompts[1], "a"),
+    Question(question_prompts[2], "a")
+]
+
+def run_test(questions):
+    score = 0
+    for question in questions:
+        answer = input(question.prompt)
+        if answer == question.answer:
+            score += 1
+    print("You got " + str(score) + " questions right!")
+
+# run_test(questions)
+
